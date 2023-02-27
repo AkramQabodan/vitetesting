@@ -1,0 +1,9 @@
+.loading-layout-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000060;
+  z-index: 2;
+}
