@@ -1,22 +1,15 @@
-import axios from "axios";
-import "./App.css";
+import { Outlet } from "react-router-dom";
 import LoadingLayout from "./components/LoadingLayout";
-import useAxios from "./config/interceptor";
+import { useAppSelector } from "./state/hooks";
+import "./App.css";
 
 function App() {
-  const requests = useAxios();
-
-  const onclickHandler = () => {
-    console.log(requests);
-    axios.get("products");
-    axios.get("products/1");
-    axios.get("products/2");
-  };
+  const count = useAppSelector((store) => store.count);
   return (
     <>
-      {requests > 0 && <LoadingLayout />}
+      {count > 0 && <LoadingLayout />}
       <div className="app">
-        <button onClick={onclickHandler}>fetch</button>
+        <Outlet />
       </div>
     </>
   );

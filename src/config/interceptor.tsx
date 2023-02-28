@@ -1,15 +1,15 @@
 import axios from "axios";
-import { useState } from "react";
+import { useAppDispatch } from "../state/hooks";
+import { sliceActions } from "../state/state";
 
 const baseUrl = "https://dummyjson.com/";
 
-const useAxios = () => {
-  const [requests, setRequests] = useState(0);
-
+const AxiosWrapper = ({ children }: { children: JSX.Element }) => {
+  const dispatch = useAppDispatch();
   axios.interceptors.request.use(
     (request) => {
-      setRequests((prev) => prev + 1);
       request.baseURL = baseUrl;
+      dispatch(sliceActions.increment());
       return request;
     },
     (error) => {
@@ -19,16 +19,14 @@ const useAxios = () => {
 
   axios.interceptors.response.use(
     (response) => {
-      setRequests((prev) => prev - 1);
+      dispatch(sliceActions.decrement());
       return response;
     },
     (error) => {
-      setRequests((prev) => prev - 1);
       console.log(error);
     }
   );
-  
-  return requests;
+  return <>{children}</>;
 };
 
-export default useAxios;
+export default AxiosWrapper;

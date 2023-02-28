@@ -1,0 +1,21 @@
+body {
+  background-color: #535151cc;
+}
+button {
+  border: none;
+  background-color: #b9b4b4;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgb(99, 99, 99);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+}
