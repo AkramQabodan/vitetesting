@@ -1,5 +1,7 @@
 body {
   background-color: #535151cc;
+  text-align: center;
+  
 }
 button {
   border: none;
@@ -11,6 +13,7 @@ button {
   color: #fff;
   text-shadow: 1px 1px 1px rgb(99, 99, 99);
   cursor: pointer;
+  margin: 1rem;
 }
 
 a {

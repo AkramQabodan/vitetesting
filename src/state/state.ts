@@ -20,6 +20,9 @@ const slice = createSlice({
     decrement: (state) => {
       state.count--;
     },
+    enableLogin:(state)=>{
+      state.enableLogin = !state.enableLogin
+    }
   },
 });
 
