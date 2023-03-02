@@ -9,7 +9,11 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<Inputs>();
   const onsubmitHandler = (data: Inputs) => {
-    console.log(data);
+    axios
+      .post("auth/login", { username: data.email, password: data.password })
+      .then((res) => {
+        console.log(res);
+      });
   };
 
   const onclickHandler = () => {

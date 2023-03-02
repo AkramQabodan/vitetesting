@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux/es/exports";
 import App from "./App";
 import AxiosWrapper from "./config/interceptor";
-import "./index.css";
+import "./index.scss";
 import store from "./state/state";
 
 
