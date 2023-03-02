@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useAppDispatch } from "../hooks/reduxHook";
+import { useAppDispatch } from "./reduxHook";
 import { sliceActions } from "../state/state";
 
 const baseUrl = "https://dummyjson.com/";
-
-const AxiosWrapper = ({ children }: { children: JSX.Element }) => {
+const useInterceptor = () => {
   const dispatch = useAppDispatch();
   axios.interceptors.request.use(
     (request) => {
@@ -23,19 +22,17 @@ const AxiosWrapper = ({ children }: { children: JSX.Element }) => {
       console.log(error);
       dispatch(sliceActions.decrement());
     }
-    );
-    
-    axios.interceptors.response.use(
-      (response) => {
-        dispatch(sliceActions.decrement());
-        return response;
-      },
-      (error) => {
-        console.log(error);
-        dispatch(sliceActions.decrement());
+  );
+
+  axios.interceptors.response.use(
+    (response) => {
+      dispatch(sliceActions.decrement());
+      return response;
+    },
+    (error) => {
+      console.log(error);
+      dispatch(sliceActions.decrement());
     }
   );
-  return <>{children}</>;
 };
-
-export default AxiosWrapper;
+export default useInterceptor;
