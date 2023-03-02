@@ -1,35 +1,12 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import LoadingLayout from "./components/LoadingLayout";
 import "./App.scss";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
 import { useAppSelector } from "./hooks/reduxHook";
-import ListPage from "./pages/ListPage";
-import MainLayout from "./layout/MainLayout";
+import useRoutes from "./hooks/useRoutes";
 
 function App() {
   const count = useAppSelector((store) => store.count);
-  const loggedIn = useAppSelector((store) => store.enableLogin);
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-        { element: <HomePage />, index: true },
-        { path: "list", element: <ListPage /> },
-      ],
-    },
-    {
-      path: "/login",
-      element: loggedIn ? <LoginPage /> : <Navigate to={"/"} />,
-    },
-  ]);
+  const router = useRoutes();
   return (
     <>
       {count > 0 && <LoadingLayout />}
