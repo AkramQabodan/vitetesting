@@ -1,6 +1,7 @@
 import "./index.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const {
@@ -61,6 +62,7 @@ const LoginPage = () => {
         <button>submit</button>
       </form>
       <button onClick={onclickHandler}>fetch</button>
+      <Link to="/">Home</Link>
     </div>
   );
 };

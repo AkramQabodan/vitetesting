@@ -9,8 +9,6 @@ function HomePage() {
   const dispatch = useAppDispatch();
 
   const onclickHandler = () => {
-    axios.get("products");
-    axios.get("products/1");
     axios.get("products/2");
   };
 
@@ -18,7 +16,6 @@ function HomePage() {
     dispatch(sliceActions.enableLogin());
   };
 
-  const count = useAppSelector((store) => store.count);
   const enabled = useAppSelector((store) => store.enableLogin);
   return (
     <>

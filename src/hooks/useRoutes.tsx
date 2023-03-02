@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import HomePage from "../pages/HomePage";
-import ListPage, { listPageLoader } from "../pages/ListPage";
+import ListPage from "../pages/ListPage";
 import LoginPage from "../pages/LoginPage";
 import { useAppSelector } from "./reduxHook";
 
@@ -13,7 +13,7 @@ const useRoutes = () => {
       element: <MainLayout />,
       children: [
         { element: <HomePage />, index: true },
-        { path: "list", element: <ListPage />, loader: listPageLoader },
+        { path: "list", element: <ListPage /> },
       ],
     },
     {
